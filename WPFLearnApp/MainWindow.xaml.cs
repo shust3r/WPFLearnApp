@@ -20,5 +20,10 @@ namespace WPFLearnApp
         {
             InitializeComponent();
         }
+
+        private void BtnAddCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("The customer was added successfully!");
+        }
     }
 }
