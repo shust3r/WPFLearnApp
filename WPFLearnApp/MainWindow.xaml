@@ -33,7 +33,14 @@
             <TextBlock Text="Version 1.0" FontSize="16"
                        Foreground="#333333"/>
         </StackPanel>
-        
+        <!--Header-->
+        <StackPanel Background="#F05A28" Orientation="Horizontal">
+            <Image Source="/Images/plus.jpg" Width="100"/>
+            <TextBlock Text="Customers App" FontSize="30"/>
+            <TextBlock Text="Version 1.0" FontSize="16"
+               Foreground="#333333"/>
+        </StackPanel>
+
         <!--Customer list-->
     </Grid>
 </Window>
