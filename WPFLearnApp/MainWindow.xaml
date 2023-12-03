@@ -7,16 +7,33 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" FontSize="20">
     <Grid>
-        <Button
-                x:Name="AddCustBtn"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Margin="10" Width="75"
-                Click="BtnAddCustomer_Click">
-            <StackPanel Orientation="Horizontal">
-                <Image Margin="0 0 5 0" Source="/Images/plus.jpg" Height="18"></Image>
-                <TextBlock>Add</TextBlock>
-            </StackPanel>
-        </Button>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <!--Main menu-->
+        <Menu FontSize="20">
+            <MenuItem Header="_View">
+                <MenuItem Header="_Customers"/>
+                <MenuItem Header="_Products"/>
+            </MenuItem>
+        </Menu>
+        
+        <!--Header-->
+        <StackPanel Background="#F05A28" Orientation="Horizontal">
+            <Image Source="/Images/plus.jpg" Width="100"/>
+            <TextBlock Text="Customers App" FontSize="30"/>
+            <TextBlock Text="Version 1.0" FontSize="16"
+                       Foreground="#333333"/>
+        </StackPanel>
+        
+        <!--Customer list-->
     </Grid>
 </Window>
