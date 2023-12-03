@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFLearnApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" FontSize="20">
     <Grid>
-
+        <Button
+                x:Name="AddCustBtn"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="10" Width="75"
+                Click="BtnAddCustomer_Click">
+            <StackPanel Orientation="Horizontal">
+                <Image Margin="0 0 5 0" Source="/Images/plus.jpg" Height="18"></Image>
+                <TextBlock>Add</TextBlock>
+            </StackPanel>
+        </Button>
     </Grid>
 </Window>
