@@ -20,13 +20,5 @@ namespace WPFLearnApp
         {
             InitializeComponent();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var column = (int)customerListGrid.GetValue(Grid.ColumnProperty);
-
-            var newColumn = column == 0 ? 2 : 0;
-            customerListGrid.SetValue(Grid.ColumnProperty, newColumn);
-        }
     }
 }
