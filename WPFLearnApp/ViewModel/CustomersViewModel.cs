@@ -6,15 +6,15 @@ namespace WPFLearnApp.ViewModel;
 public class CustomersViewModel : ViewModelBase
 {
     private readonly ICustomerDataProvider _customerDataProvider;
-    private Customer? _selectedCustomer;
+    private CustomerItemViewModel? _selectedCustomer;
 
     public CustomersViewModel(ICustomerDataProvider customerDataProvider)
     {
         _customerDataProvider = customerDataProvider;
     }
-    public ObservableCollection<Customer> Customers { get; } = new();
+    public ObservableCollection<CustomerItemViewModel> Customers { get; } = new();
 
-    public Customer? SelectedCustomer
+    public CustomerItemViewModel? SelectedCustomer
     {
         get => _selectedCustomer;
         set
@@ -36,7 +36,7 @@ public class CustomersViewModel : ViewModelBase
         {
             foreach (var customer in customers)
             {
-                Customers.Add(customer);
+                Customers.Add(new CustomerItemViewModel(customer));
             }
         }
     }
@@ -44,7 +44,8 @@ public class CustomersViewModel : ViewModelBase
     internal void Add()
     {
         var customer = new Customer { FirstName = "New" };
-        Customers.Add(customer);
-        SelectedCustomer = customer;
+        var viewModel = new CustomerItemViewModel(customer);
+        Customers.Add(viewModel);
+        SelectedCustomer = viewModel;
     }
 }
