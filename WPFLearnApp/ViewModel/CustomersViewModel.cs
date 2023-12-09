@@ -1,11 +1,9 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using WPFLearnApp.Data;
 using WPFLearnApp.Model;
 
 namespace WPFLearnApp.ViewModel;
-public class CustomersViewModel : INotifyPropertyChanged
+public class CustomersViewModel : ViewModelBase
 {
     private readonly ICustomerDataProvider _customerDataProvider;
     private Customer? _selectedCustomer;
@@ -25,8 +23,6 @@ public class CustomersViewModel : INotifyPropertyChanged
             RaisePropertyChanged();
         }
     }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
 
     public async Task LoadAsync()
     {
@@ -50,10 +46,5 @@ public class CustomersViewModel : INotifyPropertyChanged
         var customer = new Customer { FirstName = "New" };
         Customers.Add(customer);
         SelectedCustomer = customer;
-    }
-
-    private void RaisePropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
