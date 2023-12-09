@@ -7,6 +7,7 @@ public class CustomersViewModel : ViewModelBase
 {
     private readonly ICustomerDataProvider _customerDataProvider;
     private CustomerItemViewModel? _selectedCustomer;
+    private int _navigationColumn;
 
     public CustomersViewModel(ICustomerDataProvider customerDataProvider)
     {
@@ -20,6 +21,16 @@ public class CustomersViewModel : ViewModelBase
         set
         {
             _selectedCustomer = value;
+            RaisePropertyChanged();
+        }
+    }
+
+    public int NavigationColumn
+    {
+        get => _navigationColumn;
+        private set
+        {
+            _navigationColumn = value;
             RaisePropertyChanged();
         }
     }
@@ -47,5 +58,10 @@ public class CustomersViewModel : ViewModelBase
         var viewModel = new CustomerItemViewModel(customer);
         Customers.Add(viewModel);
         SelectedCustomer = viewModel;
+    }
+
+    internal void MoveNavigation()
+    {
+        NavigationColumn = NavigationColumn == 0 ? 2 : 0;
     }
 }
