@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
+using WPFLearnApp.Command;
 using WPFLearnApp.Data;
 using WPFLearnApp.Model;
+using WPFLearnApp.Command;
 
 namespace WPFLearnApp.ViewModel;
 public class CustomersViewModel : ViewModelBase
@@ -12,6 +14,8 @@ public class CustomersViewModel : ViewModelBase
     public CustomersViewModel(ICustomerDataProvider customerDataProvider)
     {
         _customerDataProvider = customerDataProvider;
+        AddCommand = new DelegateCommand(Add);
+        MoveNavigationCommand = new DelegateCommand(MoveNavigation);
     }
     public ObservableCollection<CustomerItemViewModel> Customers { get; } = new();
 
@@ -35,6 +39,9 @@ public class CustomersViewModel : ViewModelBase
         }
     }
 
+    public DelegateCommand AddCommand { get; }
+    public DelegateCommand MoveNavigationCommand { get; }
+
     public async Task LoadAsync()
     {
         if (Customers.Any())
@@ -52,7 +59,7 @@ public class CustomersViewModel : ViewModelBase
         }
     }
 
-    internal void Add()
+    private void Add(object? parameter)
     {
         var customer = new Customer { FirstName = "New" };
         var viewModel = new CustomerItemViewModel(customer);
@@ -60,7 +67,7 @@ public class CustomersViewModel : ViewModelBase
         SelectedCustomer = viewModel;
     }
 
-    internal void MoveNavigation()
+    private void MoveNavigation(object? parameter)
     {
         NavigationSide = NavigationSide == NavigationSide.Left
             ? NavigationSide.Right
