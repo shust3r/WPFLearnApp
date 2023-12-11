@@ -2,7 +2,6 @@
 using WPFLearnApp.Command;
 using WPFLearnApp.Data;
 using WPFLearnApp.Model;
-using WPFLearnApp.Command;
 
 namespace WPFLearnApp.ViewModel;
 public class CustomersViewModel : ViewModelBase
@@ -28,9 +27,12 @@ public class CustomersViewModel : ViewModelBase
         {
             _selectedCustomer = value;
             RaisePropertyChanged();
+            RaisePropertyChanged(nameof(IsCustomerSelected));
             DeleteCommand.RaiseCanExecuteChanged();
         }
     }
+
+    public bool IsCustomerSelected => SelectedCustomer is not null;
 
     public NavigationSide NavigationSide
     {
@@ -43,7 +45,9 @@ public class CustomersViewModel : ViewModelBase
     }
 
     public DelegateCommand AddCommand { get; }
+
     public DelegateCommand MoveNavigationCommand { get; }
+
     public DelegateCommand DeleteCommand { get; }
 
     public async Task LoadAsync()

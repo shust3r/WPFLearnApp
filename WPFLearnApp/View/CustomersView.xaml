@@ -1,9 +1,8 @@
 ﻿<UserControl x:Class="WPFLearnApp.View.CustomersView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPFLearnApp.View"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:converter="clr-namespace:WPFLearnApp.Converter"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -44,7 +43,9 @@
         </Grid>
 
         <!--Customer details-->
-        <StackPanel Grid.Column="1" Margin="10">
+        <StackPanel Grid.Column="1" Margin="10"
+                    Visibility="{Binding IsCustomerSelected,
+                                Converter={StaticResource BoolToVisibilityConv}}">
             <Label>Firstname:</Label>
             <TextBox Text="{Binding SelectedCustomer.FirstName,
                 Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
