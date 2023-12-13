@@ -50,7 +50,7 @@ public class CustomersViewModel : ViewModelBase
 
     public DelegateCommand DeleteCommand { get; }
 
-    public async Task LoadAsync()
+    public async override Task LoadAsync()
     {
         if (Customers.Any())
         {
